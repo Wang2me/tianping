@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡通天平</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>卡通天平</h1>
+    <div class="scale-container">
+        <div class="scale" id="scale">
+            <div class="pan left" id="leftPan">
+                <div class="pan-value" id="leftValue">0</div> <!-- 左盘显示值 -->
+            </div>
+            <div class="pan right" id="rightPan">
+                <div class="pan-value" id="rightValue">0</div> <!-- 右盘显示值 -->
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <div class="buttons" id="leftButtons">
+            <h2>left</h2>
+            <button onclick="addToInput('left', '0')">0</button>
+            <button onclick="addToInput('left', '1')">1</button>
+            <button onclick="addToInput('left', '2')">2</button>
+            <button onclick="addToInput('left', '3')">3</button>
+            <button onclick="addToInput('left', '4')">4</button>
+            <button onclick="addToInput('left', '5')">5</button>
+            <button onclick="addToInput('left', '6')">6</button>
+            <button onclick="addToInput('left', '7')">7</button>
+            <button onclick="addToInput('left', '8')">8</button>
+            <button onclick="addToInput('left', '9')">9</button>
+            <button onclick="addToInput('left', '+')">+</button>
+            <button onclick="addToInput('left', '-')">-</button>
+            <button onclick="addToInput('left', '*')">x</button>
+            <button onclick="addToInput('left', '/')">÷</button>
+            <button onclick="backspace('left')">退格</button> <!-- 退格按钮 -->
+            <button onclick="clearInput('left')">清空</button>
+        </div>
+        <div class="buttons" id="rightButtons">
+            <h2>right</h2>
+            <button onclick="addToInput('right', '0')">0</button>
+            <button onclick="addToInput('right', '1')">1</button>
+            <button onclick="addToInput('right', '2')">2</button>
+            <button onclick="addToInput('right', '3')">3</button>
+            <button onclick="addToInput('right', '4')">4</button>
+            <button onclick="addToInput('right', '5')">5</button>
+            <button onclick="addToInput('right', '6')">6</button>
+            <button onclick="addToInput('right', '7')">7</button>
+            <button onclick="addToInput('right', '8')">8</button>
+            <button onclick="addToInput('right', '9')">9</button>
+            <button onclick="addToInput('right', '+')">+</button>
+            <button onclick="addToInput('right', '-')">-</button>
+            <button onclick="addToInput('right', '*')">x</button>
+            <button onclick="addToInput('right', '/')">÷</button>
+            <button onclick="backspace('right')">退格</button> <!-- 退格按钮 -->
+            <button onclick="clearInput('right')">清空</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

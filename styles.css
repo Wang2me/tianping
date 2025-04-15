@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f8ff; /* 添加背景颜色 */
+}
+
+.scale-container {
+    margin: 20px auto;
+    position: absolute;
+    width: 800px; /* 增加天平的宽度 */
+    top:50%;
+    left: 30%;
+}
+
+.scale {
+    width: 900px; /* 增加天平的宽度 */
+    height: 30px; /* 增加天平的高度 */
+    background-color: #ffcc00; /* 天平的底座颜色 */
+    border-radius: 10px; /* 圆角 */
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    transform-origin: center; /* 设置倾斜的中心 */
+}
+
+.pan {
+    width: 120px; /* 增加天平盘的宽度 */
+    height: 80px; /* 增加天平盘的高度 */
+    background-color: #ff6666; /* 天平盘的颜色 */
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px; /* 圆角 */
+    border: 2px solid #fff; /* 白色边框 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+}
+
+.left {
+    left: 20px; /* 调整位置 */
+}
+
+.right {
+    right: 20px; /* 调整位置 */
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333; /* 结果文本颜色 */
+}
+
+.controls {
+    display: flex; /* 使用flex布局 */
+    justify-content: space-between; /* 左右分开 */
+    margin-top: 20px;
+}
+
+.buttons {
+    margin: 10px;
+    width: 200px; /* 设置按钮区域的宽度 */
+}
+
+button {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #ffcc00; /* 按钮颜色 */
+    border: none;
+    border-radius: 5px; /* 圆角 */
+    cursor: pointer;
+    transition: background-color 0.3s; /* 添加过渡效果 */
+    margin: 5px;
+    width: 100%; /* 按钮宽度填满 */
+}
+
+button:hover {
+    background-color: #ff9999; /* 悬停时颜色变化 */
+}
