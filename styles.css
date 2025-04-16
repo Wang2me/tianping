@@ -13,7 +13,7 @@ body {
 }
 
 .scale {
-    width: 900px; /* 增加天平的宽度 */
+    width: 800px; /* 增加天平的宽度 */
     height: 30px; /* 增加天平的高度 */
     background-color: #ffcc00; /* 天平的底座颜色 */
     border-radius: 10px; /* 圆角 */
