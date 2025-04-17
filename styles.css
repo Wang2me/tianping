@@ -9,7 +9,7 @@ body {
     position: absolute;
     width: 800px; /* 增加天平的宽度 */
     top:50%;
-    left: 30%;
+    left: 20%;
 }
 
 .scale {
