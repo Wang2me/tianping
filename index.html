@@ -1,63 +1,79 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卡通天平</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Leaflet Image Overlay and KML Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.min.js"></script>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+}
+        #toggleButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>balence pin</h1>
-    <div class="scale-container">
-        <div class="scale" id="scale">
-            <div class="pan left" id="leftPan">
-                <div class="pan-value" id="leftValue">0</div> <!-- 左盘显示值 -->
-            </div>
-            <div class="pan right" id="rightPan">
-                <div class="pan-value" id="rightValue">0</div> <!-- 右盘显示值 -->
-            </div>
-        </div>
-    </div>
-    <div class="controls">
-        <div class="buttons" id="leftButtons">
-            <h2>left</h2>
-            <button onclick="addToInput('left', '0')">0</button>
-            <button onclick="addToInput('left', '1')">1</button>
-            <button onclick="addToInput('left', '2')">2</button>
-            <button onclick="addToInput('left', '3')">3</button>
-            <button onclick="addToInput('left', '4')">4</button>
-            <button onclick="addToInput('left', '5')">5</button>
-            <button onclick="addToInput('left', '6')">6</button>
-            <button onclick="addToInput('left', '7')">7</button>
-            <button onclick="addToInput('left', '8')">8</button>
-            <button onclick="addToInput('left', '9')">9</button>
-            <button onclick="addToInput('left', '+')">+</button>
-            <button onclick="addToInput('left', '-')">-</button>
-            <button onclick="addToInput('left', '*')">x</button>
-            <button onclick="addToInput('left', '/')">÷</button>
-            <button onclick="backspace('left')">backspace</button> <!-- 退格按钮 -->
-            <button onclick="clearInput('left')">clear</button>
-        </div>
-        <div class="buttons" id="rightButtons">
-            <h2>right</h2>
-            <button onclick="addToInput('right', '0')">0</button>
-            <button onclick="addToInput('right', '1')">1</button>
-            <button onclick="addToInput('right', '2')">2</button>
-            <button onclick="addToInput('right', '3')">3</button>
-            <button onclick="addToInput('right', '4')">4</button>
-            <button onclick="addToInput('right', '5')">5</button>
-            <button onclick="addToInput('right', '6')">6</button>
-            <button onclick="addToInput('right', '7')">7</button>
-            <button onclick="addToInput('right', '8')">8</button>
-            <button onclick="addToInput('right', '9')">9</button>
-            <button onclick="addToInput('right', '+')">+</button>
-            <button onclick="addToInput('right', '-')">-</button>
-            <button onclick="addToInput('right', '*')">x</button>
-            <button onclick="addToInput('right', '/')">÷</button>
-            <button onclick="backspace('right')">backspace</button> <!-- 退格按钮 -->
-            <button onclick="clearInput('right')">clear</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+    <div id="map"></div>
+    <button id="toggleButton">隱藏圖片</button>
+    <script>
+        // 初始化地圖
+        var map = L.map('map').setView([40.742, -74.175], 12); // 設置中心點和縮放級別
+
+        // 添加 OpenStreetMap 圖層
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // 定義 PNG 圖片的 URL 和邊界
+        var imageUrl = 'asd.png';
+        var imageBounds = [[39.37,104], [34.53, 112]];
+
+        // 創建圖片覆蓋層
+        var imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+
+        // 調整地圖視圖以顯示圖片
+        map.fitBounds(imageBounds);
+
+        // 獲取按鈕元素
+        var toggleButton = document.getElementById('toggleButton');
+
+        // 添加按鈕點擊事件
+        toggleButton.addEventListener('click', function() {
+            if (imageOverlay.getElement().style.display === 'none') {
+                imageOverlay.getElement().style.display = 'block';
+                toggleButton.textContent = '隱藏圖片';
+            } else {
+                imageOverlay.getElement().style.display = 'none';
+                toggleButton.textContent = '顯示圖片';
+            }
+        });
+
+         // 加載 KML 文件
+         var kmlUrl = 'b.kml'; // 替換為您的 KML 文件路徑
+        var kmlLayer = omnivore.kml(kmlUrl).addTo(map);
+
+        // 可選：設置 KML 加載完成後的事件
+        kmlLayer.on('ready', function() {
+            map.fitBounds(kmlLayer.getBounds());
+        });
+    </script>
 </body>
 </html>
